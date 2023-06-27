@@ -45,4 +45,7 @@ public class User {
 
     @OneToMany(mappedBy = "owner")
     private List<Room> rooms;
+
+    @OneToMany(mappedBy = "host")
+    private List<Experience> experiences;
 }
