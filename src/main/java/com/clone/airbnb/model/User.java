@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Getter @Setter
 @NoArgsConstructor
@@ -40,4 +42,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Currency currency;
+
+    @OneToMany(mappedBy = "owner")
+    private List<Room> rooms;
 }
