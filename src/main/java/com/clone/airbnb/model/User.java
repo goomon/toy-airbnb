@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -44,8 +45,8 @@ public class User {
     private Currency currency;
 
     @OneToMany(mappedBy = "owner")
-    private List<Room> rooms;
+    private List<Room> rooms = new ArrayList<>();
 
     @OneToMany(mappedBy = "host")
-    private List<Experience> experiences;
+    private List<Experience> experiences = new ArrayList<>();
 }

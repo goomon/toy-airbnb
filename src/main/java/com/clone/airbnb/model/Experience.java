@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -49,5 +50,5 @@ public class Experience {
     private User host;
 
     @OneToMany(mappedBy = "experience")
-    List<ExperiencePerk> experiencePerks;
+    List<ExperiencePerk> experiencePerks = new ArrayList<>();
 }

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -56,5 +57,5 @@ public class Room {
     private User owner;
 
     @OneToMany(mappedBy = "room")
-    private List<RoomAmenity> roomAmenities;
+    private List<RoomAmenity> roomAmenities = new ArrayList<>();
 }
