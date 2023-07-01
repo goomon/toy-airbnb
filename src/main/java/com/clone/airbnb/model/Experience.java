@@ -40,10 +40,10 @@ public class Experience {
     private String address;
 
     @Temporal(TemporalType.TIME)
-    private Date start;
+    private Date startTime;
 
     @Temporal(TemporalType.TIME)
-    private Date end;
+    private Date endTime;
 
     @ManyToOne
     @JoinColumn(name = "HOST_ID")
@@ -54,5 +54,8 @@ public class Experience {
     private Category category;
 
     @OneToMany(mappedBy = "experience")
-    List<ExperiencePerk> experiencePerks = new ArrayList<>();
+    private List<ExperiencePerk> experiencePerks = new ArrayList<>();
+
+    @OneToMany(mappedBy = "experience")
+    private List<WishlistExperience> wishlistExperiences = new ArrayList<>();
 }

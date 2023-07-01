@@ -62,4 +62,7 @@ public class Room {
     @ManyToOne
     @JoinColumn(name = "CATEGORY_ID")
     private Category category;
+
+    @OneToMany(mappedBy = "room")
+    private List<WishlistRoom> wishlistRooms = new ArrayList<>();
 }

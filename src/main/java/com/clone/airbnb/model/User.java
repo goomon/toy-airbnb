@@ -49,4 +49,7 @@ public class User {
 
     @OneToMany(mappedBy = "host")
     private List<Experience> experiences = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<ChatRoomUser> chatRoomUsers = new ArrayList<>();
 }
