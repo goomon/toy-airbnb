@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: NanumSquareNeo;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+}
+
+h2 {
+    color: #FF5A60;
+}
+
+.home {
+    background-color: #FFFFFF;
+}
+
+.form-group {
+    padding-bottom: 1rem;
+}
+
+.app-group {
+    padding-bottom: 1rem;
+}
+
+@font-face {
+    font-family: "NanumSquareNeo";
+    src: local("/fonts/NanumSquareNeo/*");
+}

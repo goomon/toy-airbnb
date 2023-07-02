@@ -1,5 +1,6 @@
 package com.clone.airbnb.model;
 
+import com.clone.airbnb.domain.users.model.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

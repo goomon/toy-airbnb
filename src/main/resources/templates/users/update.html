@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{common/layout/header :: header}"></head>
+<body>
+    <div th:replace="~{common/fragment/home :: home}"></div>
+
+    <div class="container my-3">
+        <form role="form" th:object="${form}" method="post">
+            <input type="hidden" th:field="*{id}">
+
+            <div class="form-group">
+                <label th:for="firstName">이름</label>
+                <input type="text" th:field="*{firstName}" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label th:for="lastName">성</label>
+                <input type="text" th:field="*{lastName}" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label th:for="name">활동명</label>
+                <input type="text" th:field="*{name}" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label th:for="gender">성별</label>
+                <select th:field="*{gender}" class="form-select">
+                    <option th:each="gender : ${T(com.clone.airbnb.domain.users.model.Gender).values()}"
+                            th:value="${gender}" th:text="${gender}"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label th:for="currency">통화</label>
+                <select th:field="*{currency}" class="form-select">
+                    <option th:each="currency : ${T(com.clone.airbnb.domain.users.model.Currency).values()}"
+                            th:value="${currency}" th:text="${currency}"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label th:for="language">언어</label>
+                <select th:field="*{language}" class="form-select">
+                    <option th:each="language : ${T(com.clone.airbnb.domain.users.model.Language).values()}"
+                            th:value="${language}" th:text="${language}"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <div>가입 유형</div>
+                <div class="form-check">
+                    <input type="checkbox" th:field="*{isHost}">
+                    <label th:for="isHost">호스트</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                수정하기
+            </button>
+        </form>
+    </div>
+
+    <footer th:replace="~{common/layout/footer :: footer}"></footer>
+</body>
+</html>

@@ -1,5 +1,8 @@
-package com.clone.airbnb.model;
+package com.clone.airbnb.domain.users.model;
 
+import com.clone.airbnb.model.Room;
+import com.clone.airbnb.domain.users.form.UserForm;
+import com.clone.airbnb.model.*;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -52,4 +55,15 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<ChatRoomUser> chatRoomUsers = new ArrayList<>();
+
+
+    public User(UserForm userForm) {
+        firstName = userForm.getFirstName();
+        lastName = userForm.getLastName();
+        name = userForm.getName();
+        isHost = userForm.getIsHost();
+        gender = userForm.getGender();
+        language = userForm.getLanguage();
+        currency = userForm.getCurrency();
+    }
 }

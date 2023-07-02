@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{common/layout/header :: header}"></head>
+<body>
+    <div th:replace="~{common/fragment/home :: home}"></div>
+
+    <div class="container my-5">
+        <div class="app-group">
+            <h3>USER APP</h3>
+            <hr class="mx-0 mt-0 mb-3">
+            <p class="mt-2">
+                <a href="/admin/users" class="text-muted text-decoration-none">User</a>
+            </p>
+        </div>
+    </div>
+
+    <footer class="w-100" th:replace="~{common/layout/footer :: footer}"></footer>
+</body>
+</html>
