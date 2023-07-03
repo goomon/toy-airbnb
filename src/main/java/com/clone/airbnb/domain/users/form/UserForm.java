@@ -4,7 +4,7 @@ import com.clone.airbnb.domain.users.model.Currency;
 import com.clone.airbnb.domain.users.model.Gender;
 import com.clone.airbnb.domain.users.model.Language;
 import com.clone.airbnb.domain.users.model.User;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,12 +15,13 @@ public class UserForm {
 
     private Long id;
 
-    @NotEmpty
+    @NotBlank(message = "필수로 입력해야 합니다.")
     private String firstName;
 
-    @NotEmpty
+    @NotBlank(message = "필수로 입력해야 합니다.")
     private String lastName;
 
+    @NotBlank(message = "필수로 입력해야 합니다.")
     private String name;
 
     private Gender gender;
