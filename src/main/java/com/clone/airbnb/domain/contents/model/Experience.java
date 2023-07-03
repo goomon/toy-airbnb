@@ -1,5 +1,6 @@
 package com.clone.airbnb.domain.contents.model;
 
+import com.clone.airbnb.domain.contents.form.ExperienceForm;
 import com.clone.airbnb.domain.users.model.User;
 import com.clone.airbnb.model.WishlistExperience;
 import jakarta.persistence.*;
@@ -60,4 +61,13 @@ public class Experience {
 
     @OneToMany(mappedBy = "experience")
     private List<WishlistExperience> wishlistExperiences = new ArrayList<>();
+
+    public Experience(ExperienceForm experienceForm, User user) {
+        name = experienceForm.getName();
+        country = experienceForm.getCountry();
+        city = experienceForm.getCity();
+        price = experienceForm.getPrice();
+        address = experienceForm.getAddress();
+        host = user;
+    }
 }

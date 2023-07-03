@@ -1,5 +1,6 @@
 package com.clone.airbnb.init;
 
+import com.clone.airbnb.domain.contents.model.Experience;
 import com.clone.airbnb.domain.contents.model.Room;
 import com.clone.airbnb.domain.contents.model.RoomKind;
 import com.clone.airbnb.domain.users.model.Currency;
@@ -65,8 +66,6 @@ public class MockGenerator {
                 room.setCreated(Date.from(now));
                 room.setModified(Date.from(now));
                 Country country = faker.country();
-                room.setCreated(Date.from(now));
-                room.setModified(Date.from(now));
                 room.setCountry(country.name());
                 room.setCity(country.capital());
                 room.setPrice(faker.number().numberBetween(20, 100) * 1000);
@@ -78,6 +77,19 @@ public class MockGenerator {
                 room.setOwner(users.get(random.nextInt(users.size())));
                 room.setPetFriendly(faker.bool().bool());
                 em.persist(room);
+            }
+            for (int i = 0; i < NUM; i++) {
+                Experience experience = new Experience();
+                experience.setCreated(Date.from(now));
+                experience.setModified(Date.from(now));
+                experience.setName(faker.slackEmoji().activity());
+                Country country = faker.country();
+                experience.setCountry(country.name());
+                experience.setCity(country.capital());
+                experience.setPrice(faker.number().numberBetween(20, 100) * 1000);
+                experience.setAddress(faker.address().streetAddress());
+                experience.setHost(users.get(random.nextInt(users.size())));
+                em.persist(experience);
             }
         }
 
