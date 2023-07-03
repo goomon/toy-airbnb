@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{common/layout/header :: header}"></head>
+<body>
+  <div th:replace="~{common/fragment/home :: home}"></div>
+
+  <div class="container my-3">
+    <div>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>위치</th>
+          <th>설명</th>
+          <th>집주인</th>
+          <th>종류</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="room : ${rooms}" class="align-middle">
+          <td th:text="${room.id}"></td>
+          <td th:text="${room.city}"></td>
+          <td th:text="${room.description}"></td>
+          <td th:text="${room.owner.name}"></td>
+          <td th:text="${room.roomKind}"></td>
+          <td>
+            <a th:href="@{/admin/room/{id}/edit (id=${room.id})}" class="btn btn-secondary" role="button">
+              수정
+            </a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <a href="/admin/room/new" class="btn btn-primary">
+        추가하기
+      </a>
+    </div>
+  </div>
+
+  <footer th:replace="~{common/layout/footer :: footer}"></footer>
+</body>
+</html>

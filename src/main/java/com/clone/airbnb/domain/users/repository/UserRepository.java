@@ -22,6 +22,11 @@ public class UserRepository {
                 .getResultList();
     }
 
+    public List<User> findHost() {
+        return em.createQuery("select u from User u where u.isHost = true", User.class)
+                .getResultList();
+    }
+
     public User findById(Long id) {
         return em.find(User.class, id);
     }

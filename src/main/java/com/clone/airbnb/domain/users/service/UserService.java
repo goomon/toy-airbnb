@@ -25,6 +25,11 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
+    public List<User> findHost() {
+        return userRepository.findHost();
+    }
+
     public User findById(Long id) {
         return userRepository.findById(id);
     }

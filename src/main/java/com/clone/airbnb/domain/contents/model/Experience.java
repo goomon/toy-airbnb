@@ -1,10 +1,7 @@
-package com.clone.airbnb.model;
+package com.clone.airbnb.domain.contents.model;
 
 import com.clone.airbnb.domain.users.model.User;
-import com.clone.airbnb.model.Category;
-import com.clone.airbnb.model.RoomAmenity;
-import com.clone.airbnb.model.RoomKind;
-import com.clone.airbnb.model.WishlistRoom;
+import com.clone.airbnb.model.WishlistExperience;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,10 +14,10 @@ import java.util.List;
 @Entity
 @Getter @Setter
 @NoArgsConstructor
-public class Room {
+public class Experience {
 
     @Id @GeneratedValue
-    @Column(name = "ROOM_ID")
+    @Column(name = "EXPERIENCE_ID")
     private Long id;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -28,6 +25,9 @@ public class Room {
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date modified;
+
+    @Column(length = 250, nullable = false)
+    private String name;
 
     @Column(length = 50, nullable = false)
     private String country;
@@ -38,36 +38,26 @@ public class Room {
     @Column(nullable = false)
     private Integer price;
 
-    @Column(nullable = false)
-    private Integer rooms;
-
-    @Column(nullable = false)
-    private Integer toilets;
-
-    @Lob
-    private String description;
-
     @Column(length = 250, nullable = false)
     private String address;
 
-    @Column(nullable = false)
-    private Boolean petFriendly;
+    @Temporal(TemporalType.TIME)
+    private Date startTime;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private RoomKind roomKind;
+    @Temporal(TemporalType.TIME)
+    private Date endTime;
 
     @ManyToOne
-    @JoinColumn(name = "OWNER_ID")
-    private User owner;
-
-    @OneToMany(mappedBy = "room")
-    private List<RoomAmenity> roomAmenities = new ArrayList<>();
+    @JoinColumn(name = "HOST_ID")
+    private User host;
 
     @ManyToOne
     @JoinColumn(name = "CATEGORY_ID")
     private Category category;
 
-    @OneToMany(mappedBy = "room")
-    private List<WishlistRoom> wishlistRooms = new ArrayList<>();
+    @OneToMany(mappedBy = "experience")
+    private List<ExperiencePerk> experiencePerks = new ArrayList<>();
+
+    @OneToMany(mappedBy = "experience")
+    private List<WishlistExperience> wishlistExperiences = new ArrayList<>();
 }

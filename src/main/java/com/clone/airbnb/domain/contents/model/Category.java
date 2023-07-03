@@ -1,4 +1,4 @@
-package com.clone.airbnb.model;
+package com.clone.airbnb.domain.contents.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;

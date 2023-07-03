@@ -1,4 +1,4 @@
-package com.clone.airbnb.model;
+package com.clone.airbnb.domain.contents.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -8,19 +8,17 @@ import lombok.Setter;
 @Entity
 @Getter @Setter
 @NoArgsConstructor
-public class Video {
+public class ExperiencePerk {
 
     @Id @GeneratedValue
-    @Column(name = "VIDEO_ID")
+    @Column(name = "EXPERIENCE_PERK_ID")
     private Long id;
-
-    @Column(nullable = false)
-    private String file;
-
-    @Column(length = 140)
-    private String description;
 
     @ManyToOne
     @JoinColumn(name = "EXPERIENCE_ID")
     private Experience experience;
+
+    @ManyToOne
+    @JoinColumn(name = "PERK_ID")
+    private Perk perk;
 }

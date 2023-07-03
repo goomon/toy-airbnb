@@ -1,5 +1,6 @@
-package com.clone.airbnb.model;
+package com.clone.airbnb.domain.contents.model;
 
+import com.clone.airbnb.domain.contents.model.Experience;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,17 +9,19 @@ import lombok.Setter;
 @Entity
 @Getter @Setter
 @NoArgsConstructor
-public class ExperiencePerk {
+public class Video {
 
     @Id @GeneratedValue
-    @Column(name = "EXPERIENCE_PERK_ID")
+    @Column(name = "VIDEO_ID")
     private Long id;
+
+    @Column(nullable = false)
+    private String file;
+
+    @Column(length = 140)
+    private String description;
 
     @ManyToOne
     @JoinColumn(name = "EXPERIENCE_ID")
     private Experience experience;
-
-    @ManyToOne
-    @JoinColumn(name = "PERK_ID")
-    private Perk perk;
 }
