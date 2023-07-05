@@ -27,10 +27,10 @@ public class Room {
     @Temporal(TemporalType.TIMESTAMP)
     private Date modified;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 100, nullable = false)
     private String country;
 
-    @Column(length = 80, nullable = false)
+    @Column(length = 100, nullable = false)
     private String city;
 
     @Column(nullable = false)
