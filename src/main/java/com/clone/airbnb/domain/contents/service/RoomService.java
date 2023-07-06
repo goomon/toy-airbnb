@@ -1,5 +1,6 @@
 package com.clone.airbnb.domain.contents.service;
 
+import com.clone.airbnb.domain.contents.dto.RoomDto;
 import com.clone.airbnb.domain.contents.form.RoomForm;
 import com.clone.airbnb.domain.contents.model.Room;
 import com.clone.airbnb.domain.contents.repository.RoomRepository;
@@ -23,6 +24,10 @@ public class RoomService {
 
     public void save(Room room) {
         roomRepository.save(room);
+    }
+
+    public void save(RoomDto roomDto) {
+        roomRepository.save(roomDto);
     }
 
     public void save(RoomForm roomForm) {

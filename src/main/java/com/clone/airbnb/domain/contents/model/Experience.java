@@ -52,10 +52,6 @@ public class Experience {
     @JoinColumn(name = "HOST_ID")
     private User host;
 
-    @ManyToOne
-    @JoinColumn(name = "CATEGORY_ID")
-    private Category category;
-
     @OneToMany(mappedBy = "experience")
     private List<ExperiencePerk> experiencePerks = new ArrayList<>();
 

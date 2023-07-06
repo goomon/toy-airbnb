@@ -1,5 +1,6 @@
 package com.clone.airbnb.domain.contents.model;
 
+import com.clone.airbnb.domain.contents.dto.RoomDto;
 import com.clone.airbnb.domain.contents.form.RoomForm;
 import com.clone.airbnb.domain.users.model.User;
 import com.clone.airbnb.model.WishlistRoom;
@@ -62,10 +63,6 @@ public class Room {
     @OneToMany(mappedBy = "room")
     private List<RoomAmenity> roomAmenities = new ArrayList<>();
 
-    @ManyToOne
-    @JoinColumn(name = "CATEGORY_ID")
-    private Category category;
-
     @OneToMany(mappedBy = "room")
     private List<WishlistRoom> wishlistRooms = new ArrayList<>();
 
@@ -80,5 +77,22 @@ public class Room {
         petFriendly = roomForm.getPetFriendly();
         roomKind = roomForm.getRoomKind();
         owner = user;
+    }
+
+    public Room(RoomDto roomDto) {
+        country = roomDto.getCountry();
+        city = roomDto.getCity();
+        price = roomDto.getPrice();
+        rooms = roomDto.getRooms();
+        toilets = roomDto.getToilets();
+        description = roomDto.getDescription();
+        address = roomDto.getAddress();
+        petFriendly = roomDto.getPetFriendly();
+        roomKind = roomDto.getRoomKind();
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+        owner.getRooms().add(this);
     }
 }

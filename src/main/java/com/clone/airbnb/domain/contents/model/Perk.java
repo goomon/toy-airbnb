@@ -1,5 +1,6 @@
 package com.clone.airbnb.domain.contents.model;
 
+import com.clone.airbnb.domain.contents.dto.PerkDto;
 import com.clone.airbnb.domain.contents.model.ExperiencePerk;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -29,4 +30,10 @@ public class Perk {
 
     @OneToMany(mappedBy = "perk")
     private List<ExperiencePerk> experiencePerks = new ArrayList<>();
+
+    public Perk(PerkDto perkDto) {
+        name = perkDto.getName();
+        details = perkDto.getDetails();
+        description = perkDto.getDescription();
+    }
 }

@@ -1,5 +1,6 @@
 package com.clone.airbnb.domain.contents.model;
 
+import com.clone.airbnb.domain.contents.dto.AmenityDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,9 +25,17 @@ public class Amenity {
     @Temporal(TemporalType.TIMESTAMP)
     private Date modified;
 
+    @Column(length = 50)
+    private String name;
+
     @Column(length = 150)
     private String description;
 
     @OneToMany(mappedBy = "amenity")
     private List<RoomAmenity> roomAmenities = new ArrayList<>();
+
+    public Amenity(AmenityDto amenityDto) {
+        name = amenityDto.getName();
+        description = amenityDto.getDescription();
+    }
 }

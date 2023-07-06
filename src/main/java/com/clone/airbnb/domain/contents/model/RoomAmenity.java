@@ -23,4 +23,14 @@ public class RoomAmenity {
     @ManyToOne
     @JoinColumn(name = "AMENITY_ID")
     private Amenity amenity;
+
+    public void setRoom(Room room) {
+        this.room = room;
+        room.getRoomAmenities().add(this);
+    }
+
+    public void setAmenity(Amenity amenity) {
+        this.amenity = amenity;
+        amenity.getRoomAmenities().add(this);
+    }
 }

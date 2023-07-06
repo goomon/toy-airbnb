@@ -1,8 +1,6 @@
 package com.clone.airbnb.init;
 
-import com.clone.airbnb.domain.contents.model.Experience;
-import com.clone.airbnb.domain.contents.model.Room;
-import com.clone.airbnb.domain.contents.model.RoomKind;
+import com.clone.airbnb.domain.contents.model.*;
 import com.clone.airbnb.domain.users.model.Currency;
 import com.clone.airbnb.domain.users.model.Gender;
 import com.clone.airbnb.domain.users.model.Language;
@@ -60,6 +58,7 @@ public class MockGenerator {
             }
 
             Random random = new Random();
+            List<Room> rooms = new ArrayList<>();
             Instant now = Instant.now();
             for (int i = 0; i < NUM; i++) {
                 Room room = new Room();
@@ -76,6 +75,7 @@ public class MockGenerator {
                 room.setRoomKind(getRandomEnumValue(RoomKind.class));
                 room.setOwner(users.get(random.nextInt(users.size())));
                 room.setPetFriendly(faker.bool().bool());
+                rooms.add(room);
                 em.persist(room);
             }
             for (int i = 0; i < NUM; i++) {
@@ -90,6 +90,27 @@ public class MockGenerator {
                 experience.setAddress(faker.address().streetAddress());
                 experience.setHost(users.get(random.nextInt(users.size())));
                 em.persist(experience);
+            }
+
+            List<Amenity> amenities = new ArrayList<>();
+            for (int i = 0; i < NUM; i++) {
+                Amenity amenity = new Amenity();
+                amenity.setCreated(Date.from(now));
+                amenity.setModified(Date.from(now));
+                amenity.setName(faker.food().fruit().trim());
+                amenity.setDescription(faker.weather().description());
+                amenities.add(amenity);
+                em.persist(amenity);
+            }
+
+            for (Room room : rooms) {
+                for (int i = 0; i < 3; i++) {
+                    Amenity amenity = amenities.get(random.nextInt(amenities.size()));
+                    RoomAmenity roomAmenity = new RoomAmenity();
+                    roomAmenity.setRoom(room);
+                    roomAmenity.setAmenity(amenity);
+                    em.persist(roomAmenity);
+                }
             }
         }
 
