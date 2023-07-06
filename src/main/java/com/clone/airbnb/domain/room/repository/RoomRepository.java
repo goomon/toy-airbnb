@@ -26,29 +26,6 @@ public class RoomRepository {
         em.persist(room);
     }
 
-    public void save(RoomDto roomDto) {
-        Instant now = Instant.now();
-
-        User owner = em.find(User.class, roomDto.getOwner());
-        List<Amenity> amenities = em
-                .createQuery("select a from Amenity a where a.id in :amenities", Amenity.class)
-                .setParameter("amenities", roomDto.getAmenities())
-                .getResultList();
-
-        Room room = new Room(roomDto);
-        room.setOwner(owner);
-        room.setCreated(Date.from(now));
-        room.setModified(Date.from(now));
-        em.persist(room);
-
-        for (Amenity amenity : amenities) {
-            RoomAmenity roomAmenity = new RoomAmenity();
-            roomAmenity.setRoom(room);
-            roomAmenity.setAmenity(amenity);
-            em.persist(roomAmenity);
-        }
-    }
-
     public List<Room> findAll() {
         return em.createQuery("select r from Room r", Room.class)
                 .getResultList();

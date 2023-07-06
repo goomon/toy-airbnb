@@ -31,4 +31,11 @@ public class RoomAmenity {
         this.amenity = amenity;
         amenity.getRoomAmenities().add(this);
     }
+
+    public static RoomAmenity createRoomAmenity(Room room, Amenity amenity) {
+        RoomAmenity roomAmenity = new RoomAmenity();
+        roomAmenity.setRoom(room);
+        roomAmenity.setAmenity(amenity);
+        return roomAmenity;
+    }
 }

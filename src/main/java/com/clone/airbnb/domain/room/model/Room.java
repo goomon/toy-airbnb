@@ -95,4 +95,10 @@ public class Room {
         this.owner = owner;
         owner.getRooms().add(this);
     }
+
+    public static Room createRoom(RoomDto roomDto, User owner) {
+        Room room = new Room(roomDto);
+        room.setOwner(owner);
+        return room;
+    }
 }

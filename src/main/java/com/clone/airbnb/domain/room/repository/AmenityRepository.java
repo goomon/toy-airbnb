@@ -31,6 +31,12 @@ public class AmenityRepository {
         return em.find(Amenity.class, id);
     }
 
+    public List<Amenity> findByIds(List<Long> ids) {
+        return em.createQuery("select a from Amenity a where a.id in :ids", Amenity.class)
+                .setParameter("ids", ids)
+                .getResultList();
+    }
+
     public void deleteById(Long id) {
         Amenity amenity = em.find(Amenity.class, id);
         if (amenity != null) {

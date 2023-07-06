@@ -2,7 +2,11 @@ package com.clone.airbnb.domain.room.service;
 
 import com.clone.airbnb.domain.contents.dto.RoomDto;
 import com.clone.airbnb.domain.room.form.RoomForm;
+import com.clone.airbnb.domain.room.model.Amenity;
 import com.clone.airbnb.domain.room.model.Room;
+import com.clone.airbnb.domain.room.model.RoomAmenity;
+import com.clone.airbnb.domain.room.repository.AmenityRepository;
+import com.clone.airbnb.domain.room.repository.RoomAmenityRepository;
 import com.clone.airbnb.domain.room.repository.RoomRepository;
 import com.clone.airbnb.domain.users.model.User;
 import com.clone.airbnb.domain.users.repository.UserRepository;
@@ -20,6 +24,8 @@ import java.util.List;
 public class RoomService {
 
     private final RoomRepository roomRepository;
+    private final AmenityRepository amenityRepository;
+    private final RoomAmenityRepository roomAmenityRepository;
     private final UserRepository userRepository;
 
     public void save(Room room) {
@@ -27,7 +33,14 @@ public class RoomService {
     }
 
     public void save(RoomDto roomDto) {
-        roomRepository.save(roomDto);
+        User owner = userRepository.findById(roomDto.getOwner());
+        List<Amenity> amenities = amenityRepository.findByIds(roomDto.getAmenities());
+        Room room = Room.createRoom(roomDto, owner);
+        for (Amenity amenity : amenities) {
+            RoomAmenity roomAmenity = RoomAmenity.createRoomAmenity(room, amenity);
+            roomAmenityRepository.save(roomAmenity);
+        }
+        roomRepository.save(room);
     }
 
     public void save(RoomForm roomForm) {
