@@ -1,6 +1,6 @@
-package com.clone.airbnb.domain.contents.repository;
+package com.clone.airbnb.domain.room.repository;
 
-import com.clone.airbnb.domain.contents.model.Amenity;
+import com.clone.airbnb.domain.room.model.Amenity;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;

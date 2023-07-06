@@ -1,6 +1,6 @@
 package com.clone.airbnb.domain.contents.dto;
 
-import com.clone.airbnb.domain.contents.model.Amenity;
+import com.clone.airbnb.domain.room.model.Amenity;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Data;

@@ -2,7 +2,6 @@ package com.clone.airbnb.domain.contents.service;
 
 import com.clone.airbnb.domain.contents.form.ExperienceForm;
 import com.clone.airbnb.domain.contents.model.Experience;
-import com.clone.airbnb.domain.contents.model.Room;
 import com.clone.airbnb.domain.contents.repository.ExperienceRepository;
 import com.clone.airbnb.domain.users.model.User;
 import com.clone.airbnb.domain.users.repository.UserRepository;

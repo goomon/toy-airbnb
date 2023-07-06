@@ -1,9 +1,9 @@
-package com.clone.airbnb.domain.contents.service;
+package com.clone.airbnb.domain.room.service;
 
 import com.clone.airbnb.domain.contents.dto.RoomDto;
-import com.clone.airbnb.domain.contents.form.RoomForm;
-import com.clone.airbnb.domain.contents.model.Room;
-import com.clone.airbnb.domain.contents.repository.RoomRepository;
+import com.clone.airbnb.domain.room.form.RoomForm;
+import com.clone.airbnb.domain.room.model.Room;
+import com.clone.airbnb.domain.room.repository.RoomRepository;
 import com.clone.airbnb.domain.users.model.User;
 import com.clone.airbnb.domain.users.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

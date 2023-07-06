@@ -1,7 +1,6 @@
 package com.clone.airbnb.domain.contents.model;
 
-import com.clone.airbnb.domain.contents.model.Experience;
-import com.clone.airbnb.domain.contents.model.Room;
+import com.clone.airbnb.domain.room.model.Room;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

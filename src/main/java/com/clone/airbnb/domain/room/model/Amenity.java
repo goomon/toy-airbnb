@@ -1,4 +1,4 @@
-package com.clone.airbnb.domain.contents.model;
+package com.clone.airbnb.domain.room.model;
 
 import com.clone.airbnb.domain.contents.dto.AmenityDto;
 import jakarta.persistence.*;

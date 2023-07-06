@@ -1,9 +1,9 @@
-package com.clone.airbnb.domain.contents.repository;
+package com.clone.airbnb.domain.room.repository;
 
 import com.clone.airbnb.domain.contents.dto.RoomDto;
-import com.clone.airbnb.domain.contents.model.Amenity;
-import com.clone.airbnb.domain.contents.model.Room;
-import com.clone.airbnb.domain.contents.model.RoomAmenity;
+import com.clone.airbnb.domain.room.model.Amenity;
+import com.clone.airbnb.domain.room.model.Room;
+import com.clone.airbnb.domain.room.model.RoomAmenity;
 import com.clone.airbnb.domain.users.model.User;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;

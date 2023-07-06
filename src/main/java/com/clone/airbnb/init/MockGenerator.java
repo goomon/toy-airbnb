@@ -1,6 +1,10 @@
 package com.clone.airbnb.init;
 
 import com.clone.airbnb.domain.contents.model.*;
+import com.clone.airbnb.domain.room.model.Amenity;
+import com.clone.airbnb.domain.room.model.Room;
+import com.clone.airbnb.domain.room.model.RoomAmenity;
+import com.clone.airbnb.domain.room.model.RoomKind;
 import com.clone.airbnb.domain.users.model.Currency;
 import com.clone.airbnb.domain.users.model.Gender;
 import com.clone.airbnb.domain.users.model.Language;

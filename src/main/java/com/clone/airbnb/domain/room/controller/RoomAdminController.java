@@ -1,8 +1,8 @@
-package com.clone.airbnb.domain.contents.controller;
+package com.clone.airbnb.domain.room.controller;
 
-import com.clone.airbnb.domain.contents.form.RoomForm;
-import com.clone.airbnb.domain.contents.model.Room;
-import com.clone.airbnb.domain.contents.service.RoomService;
+import com.clone.airbnb.domain.room.form.RoomForm;
+import com.clone.airbnb.domain.room.model.Room;
+import com.clone.airbnb.domain.room.service.RoomService;
 import com.clone.airbnb.domain.users.model.User;
 import com.clone.airbnb.domain.users.service.UserService;
 import jakarta.validation.Valid;

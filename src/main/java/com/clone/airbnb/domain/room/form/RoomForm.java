@@ -1,7 +1,7 @@
-package com.clone.airbnb.domain.contents.form;
+package com.clone.airbnb.domain.room.form;
 
-import com.clone.airbnb.domain.contents.model.Room;
-import com.clone.airbnb.domain.contents.model.RoomKind;
+import com.clone.airbnb.domain.room.model.Room;
+import com.clone.airbnb.domain.room.model.RoomKind;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

@@ -1,7 +1,7 @@
-package com.clone.airbnb.domain.contents.controller;
+package com.clone.airbnb.domain.room.controller;
 
 import com.clone.airbnb.domain.contents.dto.RoomDto;
-import com.clone.airbnb.domain.contents.service.RoomService;
+import com.clone.airbnb.domain.room.service.RoomService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

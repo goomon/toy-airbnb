@@ -8,6 +8,7 @@ class AirbnbApplicationTests {
 
 	@Test
 	void contextLoads() {
+		System.out.println("Test log");
 	}
 
 }
