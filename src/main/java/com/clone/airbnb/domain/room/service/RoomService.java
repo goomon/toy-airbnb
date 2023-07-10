@@ -14,8 +14,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.Instant;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -61,8 +59,6 @@ public class RoomService {
 
     public void update(Long id, RoomForm roomForm) {
         Room room = roomRepository.findById(id);
-        Instant now = Instant.now();
-        room.setModified(Date.from(now));
         room.setCountry(roomForm.getCountry());
         room.setCity(roomForm.getCity());
         room.setPrice(roomForm.getPrice());

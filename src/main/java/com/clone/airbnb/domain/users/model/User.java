@@ -1,5 +1,6 @@
 package com.clone.airbnb.domain.users.model;
 
+import com.clone.airbnb.common.model.TimestampModel;
 import com.clone.airbnb.domain.experience.model.Experience;
 import com.clone.airbnb.domain.room.model.Room;
 import com.clone.airbnb.domain.users.form.UserForm;
@@ -16,11 +17,8 @@ import java.util.List;
 @Getter @Setter
 @NoArgsConstructor
 @Table(name = "USERS")
-public class User {
-
-    @Id @GeneratedValue
-    @Column(name = "USER_ID")
-    private Long id;
+@AttributeOverride(name = "id", column = @Column(name = "USER_ID"))
+public class User extends TimestampModel {
 
     @Column(length = 150, nullable = false)
     private String firstName;

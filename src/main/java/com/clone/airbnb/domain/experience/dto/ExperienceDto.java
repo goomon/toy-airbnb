@@ -1,7 +1,6 @@
 package com.clone.airbnb.domain.experience.dto;
 
 import com.clone.airbnb.domain.experience.model.Experience;
-import com.clone.airbnb.domain.users.model.User;
 import lombok.Data;
 
 import java.util.Date;
@@ -12,10 +11,6 @@ import java.util.stream.Collectors;
 public class ExperienceDto {
 
     private Long id;
-
-    private Date created;
-
-    private Date modified;
 
     private String name;
 
@@ -37,8 +32,6 @@ public class ExperienceDto {
 
     public ExperienceDto(Experience experience) {
         id = experience.getId();
-        created = experience.getCreated();
-        modified = experience.getModified();
         name = experience.getName();
         country = experience.getCountry();
         city = experience.getCity();

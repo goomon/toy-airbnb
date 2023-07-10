@@ -1,5 +1,6 @@
 package com.clone.airbnb.domain.experience.model;
 
+import com.clone.airbnb.common.model.TimestampModel;
 import com.clone.airbnb.domain.experience.dto.PerkDto;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -12,11 +13,8 @@ import java.util.List;
 @Entity
 @Getter @Setter
 @NoArgsConstructor
-public class Perk {
-
-    @Id @GeneratedValue
-    @Column(name = "PERK_ID")
-    private Long id;
+@AttributeOverride(name = "id", column = @Column(name = "PERK_ID"))
+public class Perk extends TimestampModel {
 
     @Column(length = 100)
     private String name;

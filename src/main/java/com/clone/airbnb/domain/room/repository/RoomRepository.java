@@ -5,8 +5,6 @@ import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Date;
-import java.time.Instant;
 import java.util.List;
 
 @Repository
@@ -16,9 +14,6 @@ public class RoomRepository {
     private final EntityManager em;
 
     public void save(Room room) {
-        Instant now = Instant.now();
-        room.setCreated(Date.from(now));
-        room.setModified(Date.from(now));
         em.persist(room);
     }
 

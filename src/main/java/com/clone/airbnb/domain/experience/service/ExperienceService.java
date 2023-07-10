@@ -14,8 +14,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.Instant;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -57,8 +55,6 @@ public class ExperienceService {
 
     public void update(Long id, ExperienceForm experienceForm) {
         Experience experience = experienceRepository.findById(id);
-        Instant now = Instant.now();
-        experience.setModified(Date.from(now));
         experience.setCountry(experienceForm.getCountry());
         experience.setName(experienceForm.getName());
         experience.setCity(experienceForm.getCity());

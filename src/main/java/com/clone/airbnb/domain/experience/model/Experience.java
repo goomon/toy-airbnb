@@ -1,5 +1,6 @@
 package com.clone.airbnb.domain.experience.model;
 
+import com.clone.airbnb.common.model.TimestampModel;
 import com.clone.airbnb.domain.experience.form.ExperienceForm;
 import com.clone.airbnb.domain.experience.dto.ExperienceDto;
 import com.clone.airbnb.domain.users.model.User;
@@ -16,17 +17,8 @@ import java.util.List;
 @Entity
 @Getter @Setter
 @NoArgsConstructor
-public class Experience {
-
-    @Id @GeneratedValue
-    @Column(name = "EXPERIENCE_ID")
-    private Long id;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date created;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modified;
+@AttributeOverride(name = "id", column = @Column(name = "EXPERIENCE_ID"))
+public class Experience extends TimestampModel {
 
     @Column(length = 250, nullable = false)
     private String name;
@@ -69,8 +61,6 @@ public class Experience {
     }
 
     public Experience(ExperienceDto experienceDto) {
-        created = experienceDto.getCreated();
-        modified = experienceDto.getModified();
         name = experienceDto.getName();
         country = experienceDto.getCountry();
         city = experienceDto.getCity();

@@ -1,5 +1,6 @@
 package com.clone.airbnb.domain.room.model;
 
+import com.clone.airbnb.common.model.TimestampModel;
 import com.clone.airbnb.domain.room.dto.RoomDto;
 import com.clone.airbnb.domain.room.form.RoomForm;
 import com.clone.airbnb.domain.users.model.User;
@@ -10,23 +11,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
 @Getter @Setter
 @NoArgsConstructor
-public class Room {
-
-    @Id @GeneratedValue
-    @Column(name = "ROOM_ID")
-    private Long id;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date created;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modified;
+@AttributeOverride(name = "id", column = @Column(name = "ROOM_ID"))
+public class Room extends TimestampModel {
 
     @Column(length = 100, nullable = false)
     private String country;

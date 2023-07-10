@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,10 +16,6 @@ import java.util.stream.Collectors;
 public class RoomDto {
 
     private Long id;
-
-    private Date created;
-
-    private Date modified;
 
     private String country;
 
@@ -46,8 +41,6 @@ public class RoomDto {
 
     public RoomDto(Room room) {
         id = room.getId();
-        created = room.getCreated();
-        modified = room.getModified();
         country = room.getCountry();
         city = room.getCity();
         price = room.getPrice();

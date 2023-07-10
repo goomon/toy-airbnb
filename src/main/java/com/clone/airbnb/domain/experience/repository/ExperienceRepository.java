@@ -5,9 +5,6 @@ import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -17,9 +14,6 @@ public class ExperienceRepository {
     private final EntityManager em;
 
     public void save(Experience experience) {
-        Instant now = Instant.now();
-        experience.setCreated(Date.from(now));
-        experience.setModified(Date.from(now));
         em.persist(experience);
     }
 

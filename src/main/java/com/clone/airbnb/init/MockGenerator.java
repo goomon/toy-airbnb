@@ -64,11 +64,8 @@ public class MockGenerator {
 
             Random random = new Random();
             List<Room> rooms = new ArrayList<>();
-            Instant now = Instant.now();
             for (int i = 0; i < NUM; i++) {
                 Room room = new Room();
-                room.setCreated(Date.from(now));
-                room.setModified(Date.from(now));
                 Country country = faker.country();
                 room.setCountry(country.name());
                 room.setCity(country.capital());
@@ -87,8 +84,6 @@ public class MockGenerator {
             List<Experience> experiences = new ArrayList<>();
             for (int i = 0; i < NUM; i++) {
                 Experience experience = new Experience();
-                experience.setCreated(Date.from(now));
-                experience.setModified(Date.from(now));
                 experience.setName(faker.slackEmoji().activity());
                 Country country = faker.country();
                 experience.setCountry(country.name());
@@ -103,8 +98,6 @@ public class MockGenerator {
             List<Amenity> amenities = new ArrayList<>();
             for (int i = 0; i < NUM; i++) {
                 Amenity amenity = new Amenity();
-                amenity.setCreated(Date.from(now));
-                amenity.setModified(Date.from(now));
                 amenity.setName(faker.food().fruit().trim());
                 amenity.setDescription(faker.weather().description());
                 amenities.add(amenity);

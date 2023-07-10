@@ -5,8 +5,6 @@ import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
-import java.time.Instant;
-import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -16,9 +14,6 @@ public class AmenityRepository {
     private final EntityManager em;
 
     public void save(Amenity amenity) {
-        Instant now = Instant.now();
-        amenity.setCreated(Date.from(now));
-        amenity.setModified(Date.from(now));
         em.persist(amenity);
     }
 
