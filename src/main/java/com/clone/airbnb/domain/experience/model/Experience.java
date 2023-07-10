@@ -1,6 +1,7 @@
-package com.clone.airbnb.domain.contents.model;
+package com.clone.airbnb.domain.experience.model;
 
-import com.clone.airbnb.domain.contents.form.ExperienceForm;
+import com.clone.airbnb.domain.experience.form.ExperienceForm;
+import com.clone.airbnb.domain.experience.dto.ExperienceDto;
 import com.clone.airbnb.domain.users.model.User;
 import com.clone.airbnb.model.WishlistExperience;
 import jakarta.persistence.*;
@@ -65,5 +66,27 @@ public class Experience {
         price = experienceForm.getPrice();
         address = experienceForm.getAddress();
         host = user;
+    }
+
+    public Experience(ExperienceDto experienceDto) {
+        created = experienceDto.getCreated();
+        modified = experienceDto.getModified();
+        name = experienceDto.getName();
+        country = experienceDto.getCountry();
+        city = experienceDto.getCity();
+        price = experienceDto.getPrice();
+        address = experienceDto.getAddress();
+        startTime = experienceDto.getStartTime();
+    }
+
+    public void setHost(User host) {
+        this.host = host;
+        host.getExperiences().add(this);
+    }
+
+    public static Experience createExperience(ExperienceDto experienceDto, User host) {
+        Experience experience = new Experience(experienceDto);
+        experience.setHost(host);
+        return experience;
     }
 }

@@ -1,8 +1,8 @@
-package com.clone.airbnb.domain.contents.controller;
+package com.clone.airbnb.domain.experience.controller;
 
-import com.clone.airbnb.domain.contents.dto.PerkDto;
-import com.clone.airbnb.domain.contents.model.Perk;
-import com.clone.airbnb.domain.contents.service.PerkService;
+import com.clone.airbnb.domain.experience.dto.PerkDto;
+import com.clone.airbnb.domain.experience.model.Perk;
+import com.clone.airbnb.domain.experience.service.PerkService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

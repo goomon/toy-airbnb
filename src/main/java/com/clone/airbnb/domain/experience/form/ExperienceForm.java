@@ -1,6 +1,6 @@
-package com.clone.airbnb.domain.contents.form;
+package com.clone.airbnb.domain.experience.form;
 
-import com.clone.airbnb.domain.contents.model.Experience;
+import com.clone.airbnb.domain.experience.model.Experience;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

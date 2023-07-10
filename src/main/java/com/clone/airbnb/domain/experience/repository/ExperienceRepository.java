@@ -1,12 +1,13 @@
-package com.clone.airbnb.domain.contents.repository;
+package com.clone.airbnb.domain.experience.repository;
 
-import com.clone.airbnb.domain.contents.model.Experience;
+import com.clone.airbnb.domain.experience.model.Experience;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Date;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -29,5 +30,9 @@ public class ExperienceRepository {
 
     public Experience findById(Long id) {
         return em.find(Experience.class, id);
+    }
+
+    public void delete(Experience experience) {
+        em.remove(experience);
     }
 }

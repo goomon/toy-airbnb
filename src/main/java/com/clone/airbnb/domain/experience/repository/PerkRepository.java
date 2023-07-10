@@ -1,6 +1,6 @@
-package com.clone.airbnb.domain.contents.repository;
+package com.clone.airbnb.domain.experience.repository;
 
-import com.clone.airbnb.domain.contents.model.Perk;
+import com.clone.airbnb.domain.experience.model.Perk;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -26,8 +26,16 @@ public class PerkRepository {
         return em.find(Perk.class, id);
     }
 
+    public List<Perk> findByIds(List<Long> ids) {
+        return em.createQuery("select p from Perk p where p.id in :ids", Perk.class)
+                .setParameter("ids", ids)
+                .getResultList();
+    }
+
     public void deleteById(Long id) {
         Perk perk = em.find(Perk.class, id);
-        em.remove(perk);
+        if (perk != null) {
+            em.remove(perk);
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.clone.airbnb.domain.contents.model;
+package com.clone.airbnb.domain.experience.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -21,4 +21,11 @@ public class ExperiencePerk {
     @ManyToOne
     @JoinColumn(name = "PERK_ID")
     private Perk perk;
+
+    public static ExperiencePerk createExperiencePerk(Experience experience, Perk perk) {
+        ExperiencePerk experiencePerk = new ExperiencePerk();
+        experiencePerk.setExperience(experience);
+        experiencePerk.setPerk(perk);
+        return experiencePerk;
+    }
 }

@@ -1,8 +1,8 @@
-package com.clone.airbnb.domain.contents.controller;
+package com.clone.airbnb.domain.experience.controller;
 
-import com.clone.airbnb.domain.contents.form.ExperienceForm;
-import com.clone.airbnb.domain.contents.model.Experience;
-import com.clone.airbnb.domain.contents.service.ExperienceService;
+import com.clone.airbnb.domain.experience.form.ExperienceForm;
+import com.clone.airbnb.domain.experience.model.Experience;
+import com.clone.airbnb.domain.experience.service.ExperienceService;
 import com.clone.airbnb.domain.users.model.User;
 import com.clone.airbnb.domain.users.service.UserService;
 import jakarta.validation.Valid;

@@ -1,7 +1,7 @@
-package com.clone.airbnb.domain.contents.service;
+package com.clone.airbnb.domain.experience.service;
 
-import com.clone.airbnb.domain.contents.model.Perk;
-import com.clone.airbnb.domain.contents.repository.PerkRepository;
+import com.clone.airbnb.domain.experience.model.Perk;
+import com.clone.airbnb.domain.experience.repository.PerkRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

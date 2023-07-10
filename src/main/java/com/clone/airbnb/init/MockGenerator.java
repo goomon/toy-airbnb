@@ -1,6 +1,6 @@
 package com.clone.airbnb.init;
 
-import com.clone.airbnb.domain.contents.model.*;
+import com.clone.airbnb.domain.experience.model.Experience;
 import com.clone.airbnb.domain.room.model.Amenity;
 import com.clone.airbnb.domain.room.model.Room;
 import com.clone.airbnb.domain.room.model.RoomAmenity;

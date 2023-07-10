@@ -1,8 +1,13 @@
-package com.clone.airbnb.domain.contents.service;
+package com.clone.airbnb.domain.experience.service;
 
-import com.clone.airbnb.domain.contents.form.ExperienceForm;
-import com.clone.airbnb.domain.contents.model.Experience;
-import com.clone.airbnb.domain.contents.repository.ExperienceRepository;
+import com.clone.airbnb.domain.experience.form.ExperienceForm;
+import com.clone.airbnb.domain.experience.dto.ExperienceDto;
+import com.clone.airbnb.domain.experience.model.Experience;
+import com.clone.airbnb.domain.experience.model.ExperiencePerk;
+import com.clone.airbnb.domain.experience.model.Perk;
+import com.clone.airbnb.domain.experience.repository.ExperiencePerkRepository;
+import com.clone.airbnb.domain.experience.repository.ExperienceRepository;
+import com.clone.airbnb.domain.experience.repository.PerkRepository;
 import com.clone.airbnb.domain.users.model.User;
 import com.clone.airbnb.domain.users.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +24,20 @@ import java.util.List;
 public class ExperienceService {
 
     private final ExperienceRepository experienceRepository;
+    private final PerkRepository perkRepository;
+    private final ExperiencePerkRepository experiencePerkRepository;
     private final UserRepository userRepository;
+
+    public void save(ExperienceDto experienceDto) {
+        User host = userRepository.findById(experienceDto.getHost());
+        List<Perk> perks = perkRepository.findByIds(experienceDto.getPerks());
+        Experience experience = Experience.createExperience(experienceDto, host);
+        for (Perk perk : perks) {
+            ExperiencePerk experiencePerk = ExperiencePerk.createExperiencePerk(experience, perk);
+            experiencePerkRepository.save(experiencePerk);
+        }
+        experienceRepository.save(experience);
+    }
 
     public void save(ExperienceForm experienceForm) {
         Long hostId = experienceForm.getHostId();
