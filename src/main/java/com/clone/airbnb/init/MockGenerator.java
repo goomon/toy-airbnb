@@ -1,6 +1,8 @@
 package com.clone.airbnb.init;
 
 import com.clone.airbnb.domain.experience.model.Experience;
+import com.clone.airbnb.domain.experience.model.ExperiencePerk;
+import com.clone.airbnb.domain.experience.model.Perk;
 import com.clone.airbnb.domain.room.model.Amenity;
 import com.clone.airbnb.domain.room.model.Room;
 import com.clone.airbnb.domain.room.model.RoomAmenity;
@@ -33,7 +35,6 @@ public class MockGenerator {
     void start() {
         generator.init();
     }
-
 
     @Component
     @Transactional
@@ -82,6 +83,8 @@ public class MockGenerator {
                 rooms.add(room);
                 em.persist(room);
             }
+
+            List<Experience> experiences = new ArrayList<>();
             for (int i = 0; i < NUM; i++) {
                 Experience experience = new Experience();
                 experience.setCreated(Date.from(now));
@@ -93,6 +96,7 @@ public class MockGenerator {
                 experience.setPrice(faker.number().numberBetween(20, 100) * 1000);
                 experience.setAddress(faker.address().streetAddress());
                 experience.setHost(users.get(random.nextInt(users.size())));
+                experiences.add(experience);
                 em.persist(experience);
             }
 
@@ -114,6 +118,26 @@ public class MockGenerator {
                     roomAmenity.setRoom(room);
                     roomAmenity.setAmenity(amenity);
                     em.persist(roomAmenity);
+                }
+            }
+
+            List<Perk> perks = new ArrayList<>();
+            for (int i = 0; i < NUM; i++) {
+                Perk perk = new Perk();
+                perk.setName(faker.food().fruit().trim());
+                perk.setDetails(faker.weather().description());
+                perk.setDescription(faker.weather().description());
+                perks.add(perk);
+                em.persist(perk);
+            }
+
+            for (Experience experience : experiences) {
+                for (int i = 0; i < 3; i++) {
+                    Perk perk = perks.get(random.nextInt(perks.size()));
+                    ExperiencePerk experiencePerk = new ExperiencePerk();
+                    experiencePerk.setExperience(experience);
+                    experiencePerk.setPerk(perk);
+                    em.persist(experiencePerk);
                 }
             }
         }
