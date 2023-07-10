@@ -1,6 +1,6 @@
 package com.clone.airbnb.domain.room.controller;
 
-import com.clone.airbnb.domain.contents.dto.RoomDto;
+import com.clone.airbnb.domain.room.dto.RoomDto;
 import com.clone.airbnb.domain.room.service.RoomService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,5 +32,10 @@ public class RoomController {
     @PostMapping
     public void save(@RequestBody RoomDto requestData) {
         roomService.save(requestData);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable("id") Long id) {
+        roomService.deleteById(id);
     }
 }

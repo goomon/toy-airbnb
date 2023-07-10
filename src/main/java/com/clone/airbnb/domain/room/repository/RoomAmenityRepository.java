@@ -14,4 +14,8 @@ public class RoomAmenityRepository {
     public void save(RoomAmenity roomAmenity) {
         em.persist(roomAmenity);
     }
+
+    public void delete(RoomAmenity roomAmenity) {
+        em.remove(roomAmenity);
+    }
 }

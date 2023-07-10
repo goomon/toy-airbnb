@@ -1,4 +1,4 @@
-package com.clone.airbnb.domain.contents.dto;
+package com.clone.airbnb.domain.room.dto;
 
 import com.clone.airbnb.domain.room.model.Room;
 import com.clone.airbnb.domain.room.model.RoomKind;

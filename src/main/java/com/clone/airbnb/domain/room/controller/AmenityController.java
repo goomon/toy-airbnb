@@ -1,6 +1,6 @@
 package com.clone.airbnb.domain.room.controller;
 
-import com.clone.airbnb.domain.contents.dto.AmenityDto;
+import com.clone.airbnb.domain.room.dto.AmenityDto;
 import com.clone.airbnb.domain.room.model.Amenity;
 import com.clone.airbnb.domain.room.service.AmenityService;
 import lombok.RequiredArgsConstructor;

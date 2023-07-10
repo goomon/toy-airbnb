@@ -1,6 +1,6 @@
 package com.clone.airbnb.domain.room.service;
 
-import com.clone.airbnb.domain.contents.dto.RoomDto;
+import com.clone.airbnb.domain.room.dto.RoomDto;
 import com.clone.airbnb.domain.room.form.RoomForm;
 import com.clone.airbnb.domain.room.model.Amenity;
 import com.clone.airbnb.domain.room.model.Room;
@@ -74,5 +74,14 @@ public class RoomService {
         room.setRoomKind(roomForm.getRoomKind());
         User user = userRepository.findById(roomForm.getOwnerId());
         room.setOwner(user);
+    }
+
+    public void deleteById(Long id) {
+        Room room = roomRepository.findById(id);
+        List<RoomAmenity> roomAmenities = room.getRoomAmenities();
+        for (RoomAmenity roomAmenity : roomAmenities) {
+            roomAmenityRepository.delete(roomAmenity);
+        }
+        roomRepository.delete(room);
     }
 }

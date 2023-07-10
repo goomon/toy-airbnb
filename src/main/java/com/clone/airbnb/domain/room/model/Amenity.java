@@ -1,6 +1,6 @@
 package com.clone.airbnb.domain.room.model;
 
-import com.clone.airbnb.domain.contents.dto.AmenityDto;
+import com.clone.airbnb.domain.room.dto.AmenityDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
