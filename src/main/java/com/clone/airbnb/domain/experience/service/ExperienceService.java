@@ -63,4 +63,13 @@ public class ExperienceService {
         User user = userRepository.findById(experienceForm.getId());
         experience.setHost(user);
     }
+
+    public void deleteById(Long id) {
+        Experience experience = experienceRepository.findById(id);
+        List<ExperiencePerk> experiencePerks = experience.getExperiencePerks();
+        for (ExperiencePerk experiencePerk : experiencePerks) {
+            experiencePerkRepository.delete(experiencePerk);
+        }
+        experienceRepository.delete(experience);
+    }
 }

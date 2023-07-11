@@ -46,7 +46,7 @@ public class User extends TimestampModel {
     @Column(nullable = false)
     private Currency currency;
 
-    @OneToMany(mappedBy = "owner")
+    @OneToMany(mappedBy = "host")
     private List<Room> rooms = new ArrayList<>();
 
     @OneToMany(mappedBy = "host")

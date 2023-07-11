@@ -48,8 +48,8 @@ public class Room extends TimestampModel {
     private RoomKind roomKind;
 
     @ManyToOne
-    @JoinColumn(name = "OWNER_ID")
-    private User owner;
+    @JoinColumn(name = "HOST_ID")
+    private User host;
 
     @OneToMany(mappedBy = "room")
     private List<RoomAmenity> roomAmenities = new ArrayList<>();
@@ -67,7 +67,7 @@ public class Room extends TimestampModel {
         address = roomForm.getAddress();
         petFriendly = roomForm.getPetFriendly();
         roomKind = roomForm.getRoomKind();
-        owner = user;
+        host = user;
     }
 
     public Room(RoomDto roomDto) {
@@ -82,14 +82,14 @@ public class Room extends TimestampModel {
         roomKind = roomDto.getRoomKind();
     }
 
-    public void setOwner(User owner) {
-        this.owner = owner;
-        owner.getRooms().add(this);
+    public void setHost(User host) {
+        this.host = host;
+        host.getRooms().add(this);
     }
 
-    public static Room createRoom(RoomDto roomDto, User owner) {
+    public static Room createRoom(RoomDto roomDto, User host) {
         Room room = new Room(roomDto);
-        room.setOwner(owner);
+        room.setHost(host);
         return room;
     }
 }

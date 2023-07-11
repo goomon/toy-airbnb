@@ -31,9 +31,9 @@ public class RoomService {
     }
 
     public void save(RoomDto roomDto) {
-        User owner = userRepository.findById(roomDto.getOwner());
+        User host = userRepository.findById(roomDto.getHost());
         List<Amenity> amenities = amenityRepository.findByIds(roomDto.getAmenities());
-        Room room = Room.createRoom(roomDto, owner);
+        Room room = Room.createRoom(roomDto, host);
         for (Amenity amenity : amenities) {
             RoomAmenity roomAmenity = RoomAmenity.createRoomAmenity(room, amenity);
             roomAmenityRepository.save(roomAmenity);
@@ -42,7 +42,7 @@ public class RoomService {
     }
 
     public void save(RoomForm roomForm) {
-        Long ownerId = roomForm.getOwnerId();
+        Long ownerId = roomForm.getHostId();
         User owner = userRepository.findById(ownerId);
         Room room = new Room(roomForm, owner);
         roomRepository.save(room);
@@ -68,8 +68,8 @@ public class RoomService {
         room.setAddress(roomForm.getAddress());
         room.setPetFriendly(roomForm.getPetFriendly());
         room.setRoomKind(roomForm.getRoomKind());
-        User user = userRepository.findById(roomForm.getOwnerId());
-        room.setOwner(user);
+        User user = userRepository.findById(roomForm.getHostId());
+        room.setHost(user);
     }
 
     public void deleteById(Long id) {

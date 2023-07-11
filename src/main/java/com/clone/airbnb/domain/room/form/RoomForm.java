@@ -40,7 +40,7 @@ public class RoomForm {
     private RoomKind roomKind;
 
     @NotNull(message = "호스트를 선택해야 합니다.")
-    private Long ownerId;
+    private Long hostId;
 
     public RoomForm(Room room) {
         id = room.getId();
@@ -53,6 +53,6 @@ public class RoomForm {
         address = room.getAddress();
         petFriendly = room.getPetFriendly();
         roomKind = room.getRoomKind();
-        ownerId = room.getOwner().getId();
+        hostId = room.getHost().getId();
     }
 }

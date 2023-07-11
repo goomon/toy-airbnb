@@ -35,7 +35,7 @@ public class RoomDto {
 
     private RoomKind roomKind;
 
-    private Long owner;
+    private Long host;
 
     private List<Long> amenities;
 
@@ -50,7 +50,7 @@ public class RoomDto {
         address = room.getAddress();
         petFriendly = room.getPetFriendly();
         roomKind = room.getRoomKind();
-        owner = room.getOwner().getId();
+        host = room.getHost().getId();
         amenities = room.getRoomAmenities().stream()
                 .map(x -> x.getAmenity().getId())
                 .collect(Collectors.toList());

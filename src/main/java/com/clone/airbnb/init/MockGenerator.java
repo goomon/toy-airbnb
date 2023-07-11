@@ -75,7 +75,7 @@ public class MockGenerator {
                 room.setDescription(faker.book().title());
                 room.setAddress(faker.address().streetAddress());
                 room.setRoomKind(getRandomEnumValue(RoomKind.class));
-                room.setOwner(users.get(random.nextInt(users.size())));
+                room.setHost(users.get(random.nextInt(users.size())));
                 room.setPetFriendly(faker.bool().bool());
                 rooms.add(room);
                 em.persist(room);
