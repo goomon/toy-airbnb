@@ -3,6 +3,7 @@ package com.clone.airbnb.init;
 import com.clone.airbnb.domain.experience.model.Experience;
 import com.clone.airbnb.domain.experience.model.ExperiencePerk;
 import com.clone.airbnb.domain.experience.model.Perk;
+import com.clone.airbnb.domain.review.model.Review;
 import com.clone.airbnb.domain.room.model.Amenity;
 import com.clone.airbnb.domain.room.model.Room;
 import com.clone.airbnb.domain.room.model.RoomAmenity;
@@ -132,6 +133,23 @@ public class MockGenerator {
                     experiencePerk.setPerk(perk);
                     em.persist(experiencePerk);
                 }
+            }
+
+            for (int i = 0; i < NUM * 5; i++) {
+                Review review = new Review();
+                review.setUser(users.get(random.nextInt(users.size())));
+                review.setExperience(experiences.get(random.nextInt(experiences.size())));
+                review.setRating(random.nextInt(5) + 1);
+                review.setPayload(faker.weather().description());
+                em.persist(review);
+            }
+            for (int i = 0; i < NUM * 5; i++) {
+                Review review = new Review();
+                review.setUser(users.get(random.nextInt(users.size())));
+                review.setRoom(rooms.get(random.nextInt(rooms.size())));
+                review.setRating(random.nextInt(5) + 1);
+                review.setPayload(faker.weather().description());
+                em.persist(review);
             }
         }
 
