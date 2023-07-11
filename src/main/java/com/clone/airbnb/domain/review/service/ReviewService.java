@@ -46,4 +46,8 @@ public class ReviewService {
         Review review = reviewRepository.findById(id);
         reviewRepository.delete(review);
     }
+
+    public List<Review> paginate(Integer limit, Integer offset) {
+        return reviewRepository.paginate(limit, offset);
+    }
 }

@@ -18,8 +18,11 @@ public class ReviewController {
     private final ReviewService reviewService;
 
     @GetMapping
-    public List<ReviewDto> findAll() {
-        return reviewService.findAll().stream()
+    public List<ReviewDto> list(@RequestParam(name = "limit", defaultValue = "20") String limitParam,
+                                   @RequestParam(name = "offset", defaultValue = "0") String offsetParam) {
+        Integer limit = Integer.valueOf(limitParam);
+        Integer offset = Integer.valueOf(offsetParam);
+        return reviewService.paginate(limit, offset).stream()
                 .map(ReviewDto::new)
                 .collect(Collectors.toList());
     }

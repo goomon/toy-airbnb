@@ -33,4 +33,11 @@ public class ReviewRepository {
     public void delete(Review review) {
         em.remove(review);
     }
+
+    public List<Review> paginate(Integer limit, Integer offset) {
+        return em.createQuery("select r from Review r order by r.id desc", Review.class)
+                .setFirstResult(offset)
+                .setMaxResults(limit)
+                .getResultList();
+    }
 }

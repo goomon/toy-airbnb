@@ -135,7 +135,7 @@ public class MockGenerator {
                 }
             }
 
-            for (int i = 0; i < NUM * 5; i++) {
+            for (int i = 0; i < NUM * 10; i++) {
                 Review review = new Review();
                 review.setUser(users.get(random.nextInt(users.size())));
                 review.setExperience(experiences.get(random.nextInt(experiences.size())));
@@ -143,7 +143,7 @@ public class MockGenerator {
                 review.setPayload(faker.weather().description());
                 em.persist(review);
             }
-            for (int i = 0; i < NUM * 5; i++) {
+            for (int i = 0; i < NUM * 10; i++) {
                 Review review = new Review();
                 review.setUser(users.get(random.nextInt(users.size())));
                 review.setRoom(rooms.get(random.nextInt(rooms.size())));
