@@ -77,14 +77,14 @@
             <div class="form-group">
                 <label th:for="roomKind">종류</label>
                 <select th:field="*{roomKind}" class="form-select">
-                    <option th:each="roomKind : ${T(com.clone.airbnb.domain.contents.model.RoomKind).values()}"
+                    <option th:each="roomKind : ${T(com.clone.airbnb.domain.room.model.RoomKind).values()}"
                         th:value="${roomKind}" th:text="${roomKind}"></option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label th:for="owner">호스트</label>
-                <select th:field="*{ownerId}" class="form-select">
+                <select th:field="*{hostId}" class="form-select">
                     <option th:each="host : ${hosts}"
                         th:value="${host.id}" th:text="${host.name}"></option>
                 </select>

@@ -22,7 +22,7 @@
           <td th:text="${room.id}"></td>
           <td th:text="${room.city}"></td>
           <td th:text="${room.description}"></td>
-          <td th:text="${room.owner.name}"></td>
+          <td th:text="${room.host.name}"></td>
           <td th:text="${room.roomKind}"></td>
           <td>
             <a th:href="@{/admin/room/{id}/edit (id=${room.id})}" class="btn btn-secondary" role="button">
