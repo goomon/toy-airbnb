@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{common/layout/header :: header}"></head>
+<body>
+    <div th:replace="~{common/fragment/home :: home}"></div>
+
+    <div class="container my-3">
+        <form role="form" method="post" action="/admin/photo/new" th:object="${photoForm}"
+              enctype="multipart/form-data">
+            <input type="hidden" th:field="*{id}">
+
+            <div class="form-group">
+                <label th:for="file">파일 업로드</label>
+                <input type="file" th:field="*{file}"
+                       th:class="${#fields.hasErrors('file')} ? 'form-control is-invalid' : 'form-control'">
+                <p th:if="${#fields.hasErrors('file')}" th:errors="*{file}" class="my-0 invalid-feedback">
+                    Incorrect data
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label th:for="description">설명</label>
+                <input type="text" th:field="*{description}" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label th:for="room">방</label>
+                <select th:field="*{roomId}"
+                    th:class="${#fields.hasErrors('roomId')} ? 'form-select is-invalid' : 'form-select'">
+                    <option th:value="null" th:text="해당없음"></option>
+                    <option th:each="room : ${rooms}"
+                        th:value="${room.id}" th:text="${room.description}"></option>
+                </select>
+                <p th:if="${#fields.hasErrors('roomId')}" th:errors="*{roomId}" class="my-0 invalid-feedback">
+                    Incorrect data
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label th:for="experience">체험</label>
+                <select th:field="*{experienceId}"
+                    th:class="${#fields.hasErrors('experienceId')} ? 'form-select is-invalid' : 'form-select'">
+                    <option th:value="null" th:text="해당없음"></option>
+                    <option th:each="experience : ${experiences}"
+                        th:value="${experience.id}" th:text="${experience.name}"></option>
+                </select>
+                <p th:if="${#fields.hasErrors('experienceId')}" th:errors="*{experienceId}" class="my-0 invalid-feedback">
+                    Incorrect data
+                </p>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                등록하기
+            </button>
+        </form>
+    </div>
+
+    <footer th:replace="~{common/layout/footer :: footer}"></footer>
+</body>
+</html>

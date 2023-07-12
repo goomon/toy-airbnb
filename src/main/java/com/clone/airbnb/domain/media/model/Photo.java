@@ -18,7 +18,7 @@ public class Photo {
     private Long id;
 
     @Column(nullable = false)
-    private String file;
+    private String filename;
 
     @Column(length = 140)
     private String description;
@@ -30,4 +30,13 @@ public class Photo {
     @OneToOne
     @JoinColumn(name = "EXPERIENCE_ID")
     private Experience experience;
+
+    public static Photo create(PhotoForm photoForm, Room room, Experience experience) {
+        Photo photo = new Photo();
+        photo.setFilename(photoForm.getFile().getOriginalFilename());
+        photo.setDescription(photoForm.getDescription());
+        photo.setRoom(room);
+        photo.setExperience(experience);
+        return photo;
+    }
 }
