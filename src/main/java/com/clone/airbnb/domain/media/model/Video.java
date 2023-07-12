@@ -1,4 +1,4 @@
-package com.clone.airbnb.domain.contents.model;
+package com.clone.airbnb.domain.media.model;
 
 import com.clone.airbnb.domain.experience.model.Experience;
 import jakarta.persistence.*;
