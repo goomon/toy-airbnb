@@ -12,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -90,5 +92,18 @@ public class PhotoAdminController {
     public Resource downloadImage(@PathVariable("filename") String filename) throws MalformedURLException {
         String fullPath = fileStore.getFullPath(filename);
         return new UrlResource("file:" + fullPath);
+    }
+
+    @GetMapping("/attach/{id}")
+    public ResponseEntity<Resource> downloadAttach(@PathVariable Long id) throws MalformedURLException {
+        Photo photo = photoService.findById(id);
+        String fullPath = fileStore.getFullPath(photo.getFilename());
+
+        UrlResource resource = new UrlResource("file:" + fullPath);
+
+        String contentDisposition = "attachment; filename=\"" + photo.getFilename() + "\"";
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, contentDisposition)
+                .body(resource);
     }
 }

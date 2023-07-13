@@ -42,4 +42,8 @@ public class PhotoService {
     public List<Photo> findAll() {
         return photoRepository.findAll();
     }
+
+    public Photo findById(Long id) {
+        return photoRepository.findById(id);
+    }
 }

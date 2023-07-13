@@ -21,4 +21,8 @@ public class PhotoRepository {
         return em.createQuery("select p from Photo p", Photo.class)
                 .getResultList();
     }
+
+    public Photo findById(Long id) {
+        return em.find(Photo.class, id);
+    }
 }
